@@ -42,13 +42,13 @@ parse_git_branch() {
 # Uses the parse_git_branch() function for that
 parse_git_branch_color() {
     br=$(parse_git_branch)
-    if [[ $br == "(master)" || $br == "(master*)" || $br == "(master***)" ]]; then
-        echo -e "${blue}"
-    elif [[ $br == "(master**)" ]]
+    if [[ $br == "(master)" || $br == "(master*)" ]]; then
+        echo -e "${green}"
+    elif [[ $br == "(master**)" || $br == "(master***)" ]]
     then
         echo -e "${red}"
     else
-	echo -e "${green}"
+	echo -e "${blue}"
     fi
 }
 
