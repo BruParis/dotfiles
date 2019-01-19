@@ -1,0 +1,15 @@
+#!/bin/sh
+
+volume=$(amixer -c 1 sget Master | awk -F"[][]" '/dB/ {print $2}' | sed 's/%//g')
+
+if [ "$volume" -ge 66 ]; then
+    icon="🔊"
+elif [ "$volume" -ge 33 ]; then
+    icon="🔉"
+elif [ "$volume" -ge 1 ]; then
+    icon="🔈"
+else
+    icon="🔇"
+fi
+
+echo "$icon $volume%"

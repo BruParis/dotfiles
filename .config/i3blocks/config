@@ -2,6 +2,11 @@ command=~/.scripts/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
+[volume]
+command=~/.scripts/statusbar/volume
+interval=once
+signal=10
+
 [memory]
 command=~/.scripts/statusbar/i3mem
 interval=20
