@@ -2,10 +2,14 @@ command=~/.scripts/statusbar/$BLOCK_NAME
 separator_block_width=15
 markup=pango
 
-[battery]
-command=~/.scripts/statusbar/battery BAT0
-interval=10
+[memory]
+command=~/.scripts/statusbar/i3mem
+interval=20
 
 [clock]
 label=
 interval=30
+
+[battery]
+command=~/.scripts/statusbar/battery BAT0
+interval=10
