@@ -1,0 +1,27 @@
+#!/bin/sh
+# Pass battery name -in /sys/class/power_supply as fst argument
+
+for x in "$(xrdb -query | sed "s/.*\./export /g;s/:\s*/=\"/g;s/$/\"/g")"; do eval "$x"; done
+
+#case $BLOCK_BUTTON in
+#esac
+
+capacity=$(cat /sys/class/power_supply/"$1"/capacity) || exit
+status=$(cat /sys/class/power_supply/"$1"/status)
+
+if [ "$capacity" -ge 75 ]; then
+    color="$color2"
+elif [ "$capacity" -ge 50 ]; then
+    color="$color3"
+elif [ "$capacity" -ge 25 ]; then
+    color="$color9"
+else
+    color="$color1"
+    warn="⚠"
+fi
+
+[ -z $warn ] && warn=" "
+
+[ "$status" = "Charging" ] && color="$color15"
+
+printf "<span color='%s'>%s%s%s</span>" "$color" "$(echo "$status" | sed -e "s/,//g;s/Discharging/  /;s/Charging/  /;s/Unknown/U/g;s/Full/⚡/g;s/ 0*/ /g;s/ :/ /g")" "$warn" "$(echo "$capacity" | sed -e 's/$/%/g')"
