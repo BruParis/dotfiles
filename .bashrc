@@ -5,21 +5,22 @@ shopt -s autocd #Allow to cd into directory with just directory name
 
 source /usr/share/git/completion/git-prompt.sh
 
-export PS1="$(tput bold)\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\$(parse_git_branch) \[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+export PS1="$(tput bold)\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h:\[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\[\$(parse_git_branch_color)\]\$(parse_git_branch)\$\[$(tput sgr0)\] "
 #check the window size after eacch command and, if necessary update values of LINES and COLUMNS
 shopt -s checkwinsize
 
 #ssh
 eval $(ssh-agent) > /dev/null
 
-#locales
-export LC_ALL=fr_FR.UTF-8
-export LANG=fr_FR.UTF-8
-export LANNGUAGE=fr_FR.UTF-8
+# Colors for the prompt
+blue="\033[0;34m"
+white="\033[0;37m"
+red="\033[0;31m"
+green="\033[0;32m"
 
 parse_git_branch() {
-    gitstatus='git status 2> /dev/null'
-    if [[ `echo $gitstatus | grep "Changes to be commited"` != "" ]]
+    gitstatus="$(git status 2> /dev/null)"
+    if [[ `echo $gitstatus | grep "Changes to be committed"` != "" ]]
     then
         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1***)/'
     elif [[ `echo $gitstatus | grep "Changes not staged for commit"` != "" ]]
@@ -28,7 +29,7 @@ parse_git_branch() {
     elif [[ `echo $gitstatus | grep "Untracked"` != "" ]]
     then
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1*)/'
-    elif [[ `echo $gitstatus | grep "Nothing to commit"` != "" ]]
+    elif [[ `echo "$gitstatus" | grep "nothing to commit"` != "" ]]
     then
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
     else
@@ -41,8 +42,11 @@ parse_git_branch() {
 # Uses the parse_git_branch() function for that
 parse_git_branch_color() {
     br=$(parse_git_branch)
-    if [[ $br == "(master)" || $br == "(master*)" || $bbbr == "(master**" || $br == "(master***)" ]]; then
+    if [[ $br == "(master)" || $br == "(master*)" || $br == "(master***)" ]]; then
         echo -e "${blue}"
+    elif [[ $br == "(master**)" ]]
+    then
+        echo -e "${red}"
     else
 	echo -e "${green}"
     fi
@@ -54,6 +58,7 @@ parse_git_branch_color() {
 #fi
 
 # Adding color
+alias git='LANG=en_GB git'
 alias ls='ls -hN --color=auto --group-directories-first'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
