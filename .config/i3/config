@@ -9,7 +9,16 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# --- Basic definitions ---
+for_window [class="^.*"] border pixel 2
+gaps inner 10
+gaps inner 10
+set $term --no-startup-id $TERMINAL
 set $mod Mod4
+
+# ---External Scripts ---
+# Background
+exec --no-startup-id setbg
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -29,14 +38,11 @@ font pango:Linux Libertine Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# set wallpaper
-exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/wallpaper.png
-
 #open ranger
-exec $TERMINAL -e $FILE
+exec $term -e $FILE
 
 #open terminal
-exec $TERMINAL
+exec $term
 
 #load xbinkeysrc
 exec xbindkeys -p
