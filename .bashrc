@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 shopt -s autocd #Allow to cd into directory with just directory name
 
 source /usr/share/git/completion/git-prompt.sh
@@ -56,6 +55,8 @@ parse_git_branch_color() {
 #if [ -f ~/.bashrc_aliases ]; then
 #     . ~/.bash_aliasees
 #fi
+alias trash="trash-put"
+alias rm="echo 'rm disabled. Use trash to move to Trash/file'"
 
 # Adding color
 alias git='LANG=en_GB git'

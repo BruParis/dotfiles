@@ -32,6 +32,9 @@ floating_modifier $mod
 # set wallpaper
 exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/wallpaper.png
 
+#open ranger
+exec $TERMINAL -e $FILE
+
 #open terminal
 exec $TERMINAL
 
