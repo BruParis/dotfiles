@@ -13,12 +13,25 @@ one_screen() {
 # get all possible displays.
 displays=$(xrandr -q | grep "\ connected")
 
-# get all connected sccreens.
+# get all connected screens.
 screens=$(echo "$displays" | awk '{print $1}')
 
-# get user choice for display selection
-choice=$(printf "%s\\ndual-screens\\nGUI selection" "$screens" | dmenu -i -p "Select display layout:") &&case "$choice" in
+num_screens=$(echo "$screens" | wc -l)
+
+if [[ $num_screens == 1 ]]
+then
+    # screen not connected but still provided but xrandr
+    pro_unco=$(xrandr --current | grep "+0" | awk '{print $1}' | grep -v "$screens")
+    num_unco=$(echo "$pro_unoc" | wc -l)
+    if [[ $num_unco -ge 0 ]]
+    then
+        xrandr --output "$pro_unco" --off
+    fi
+else
+        # get user choice for display selection
+    choice=$(printf "%s\\ndual-screens\\nGUI selection" "$screens" | dmenu -i -p "Select display layout:") && case "$choice" in
         "manual selection") arandr ; exit;;
         "dual-screens") dual_screens ;;
         *) one_screen ;;
-esac
+    esac
+fi
