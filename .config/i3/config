@@ -22,6 +22,9 @@ exec --no-startup-id setbg
 # Composite manager
 exec --no-startup-id xcompmgr
 
+#music player daemon
+exec --no-startup-id mpd
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Linux Libertine Mono 8
