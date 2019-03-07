@@ -23,7 +23,7 @@ exec --no-startup-id setbg
 exec --no-startup-id xcompmgr
 
 #music player daemon
-exec --no-startup-id mpd
+exec --no-startup-id mpd .config/mpd/mpd.conf
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -42,6 +42,10 @@ font pango:Linux Libertine Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# constrain floating window siz
+floating_minimum_size 75 x 50
+floating_maximum_size 750 x 500
 
 #open ranger
 exec $term -e $FILE
