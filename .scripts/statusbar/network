@@ -1,0 +1,42 @@
+#!/bin/sh
+
+INTERFACE="${BLOCK_INTERFACE:-wlp3s0}"
+
+state() {
+    cat /sys/class/net/$INTERFACE/operstate
+}
+
+speed() {
+    cat /sys/class/net/$INTERFACE/speed 2> /dev/null
+}
+
+ipv4 () {
+    ip addr show $INTERFACE | awk '/inet\ / {print $2}'
+}
+
+ipv6 () {
+    ip addr show $INTERFACE | awk '/inet6\ / {print $2}'
+}
+
+if [ "$(state)" != 'up' ]; then
+    echo DOWN
+    echo DOWN
+    echo  #ff0000
+    exit 0
+fi
+
+IP=$(ipv6)
+[ -z "$IP" ] && IP=$(ipv4)
+
+if [ -z "$IP" ]; then
+    echo no addr
+    echo no addr
+    exit 0
+fi
+
+echo -n "$IP"
+SPEED=$(speed)
+[ -n "$SPEED" ] && echo "($SPEED Mbits/s)" || echo
+
+echo $IP
+

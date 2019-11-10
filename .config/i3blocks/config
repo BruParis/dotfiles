@@ -1,20 +1,38 @@
 command=~/.scripts/statusbar/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=20
 markup=pango
 
 [volume]
-command=~/.scripts/statusbar/volume
 interval=once
 signal=10
 
-[memory]
-command=~/.scripts/statusbar/i3mem
+[battery]
+command=echo $(~/.scripts/statusbar/battery BAT0)
 interval=20
 
-[clock]
-label=
-interval=30
+[cpu_usage]
+label=
+interval=5
+min_width=CPU:100.00%
+color=#00FF00
 
-[battery]
-command=~/.scripts/statusbar/battery BAT0
+[ram]
+label=
 interval=10
+color=#00FF00
+
+[disk]
+label=
+interval=30
+color=#00FF00
+
+[time]
+label=
+command=date '+ %a %y-%m-%d  %H:%M %p'
+interval=5
+color=#00FFFF
+
+[shutdown_menu]
+full_text=  Quit
+command=~/.scripts/statusbar/exit_shutdown_menu -p rofi; echo   Quit
+color=#00FFFF
