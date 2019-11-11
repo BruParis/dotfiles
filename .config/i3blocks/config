@@ -11,7 +11,6 @@ command=echo $(~/.scripts/statusbar/battery BAT0)
 interval=20
 
 [cpu_usage]
-label=
 interval=5
 min_width=CPU:100.00%
 color=#00FF00
