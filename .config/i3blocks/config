@@ -2,17 +2,14 @@ command=~/.scripts/statusbar/$BLOCK_NAME
 separator_block_width=20
 markup=pango
 
-[volume]
-interval=once
-signal=10
-
 [battery]
 command=echo $(~/.scripts/statusbar/battery BAT0)
-interval=20
+min_width=B:100%
+interval=10
 
 [cpu_usage]
 interval=5
-min_width=CPU:100.00%
+min_width=:100.00%
 color=#00FF00
 
 [ram]
@@ -24,6 +21,10 @@ color=#00FF00
 label=
 interval=30
 color=#00FF00
+
+[volume]
+interval=once
+signal=10
 
 [time]
 label=
