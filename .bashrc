@@ -4,7 +4,7 @@ shopt -s autocd #Allow to cd into directory with just directory name
 
 source /usr/share/git/completion/git-prompt.sh
 
-export PS1="$(tput bold)\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h:\[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\[\$(parse_git_branch_color)\]\$(parse_git_branch)\$\[$(tput sgr0)\] "
+export PS1="\[$(tput bold)$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 4)\]@\[$(tput setaf 2)\]\h:\[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\[\$(parse_git_branch_color)\]\$(parse_git_branch)\$\[$(tput sgr0)\] "
 #check the window size after each command and, if necessary update values of LINES and COLUMNS
 shopt -s checkwinsize
 
