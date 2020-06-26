@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd $DOTFILES_PATH
+git ls-files | xargs -I {} echo "${HOME}/{} ${DOTFILES_PATH}{}" | xargs -n2 cp

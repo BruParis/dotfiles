@@ -11,6 +11,13 @@
 	set encoding=utf-8
 	set number relativenumber
 
+" Vundle package manager
+        set rtp+=/usr/share/vim/vimfiles/autoload/vundle.vim
+ 	call vundle#begin()
+	Plugin 'VundleVim/vundle.vim'
+
+	call vundle#end()
+
 " Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed)
 
         vnoremap <C-c> "+y

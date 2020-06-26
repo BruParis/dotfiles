@@ -36,4 +36,4 @@
 *.color15:      #c5c8c6
 
 !! Transparency (0-255)
-st.alpha: 195
+st.alpha: 240

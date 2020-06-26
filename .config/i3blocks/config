@@ -28,7 +28,7 @@ signal=10
 
 [time]
 label=
-command=date '+ %a %y-%m-%d  %H:%M %p'
+command=date '+ %a %d-%m-%y  %H:%M %p'
 interval=5
 color=#00FFFF
 

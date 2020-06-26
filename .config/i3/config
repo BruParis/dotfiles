@@ -19,8 +19,10 @@ set $mod Mod4
 # ---External Scripts ---
 # Background
 exec --no-startup-id setbg
+
 # Composite manager
 exec --no-startup-id xcompmgr
+# exec --no-startup-id compton
 
 #music player daemon
 exec --no-startup-id mpd .config/mpd/mpd.conf

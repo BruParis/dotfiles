@@ -23,5 +23,5 @@ FINAL_PATH=$GENERIC_PATH"-final.pdf"
 pdftk A=$BOOK_PATH shuffle AoddNorth AevenSouth output $FINAL_PATH
 
 if [ $PRINT_OPTION ]; then
-    lpr -P ENVY_5010 -o fit-to-page -o sides=two-sided-short $FINAL_PATH
+    lpr -P ENVY_5010 -o fit-to-page -o sides=two-sided-short-edge $FINAL_PATH
 fi

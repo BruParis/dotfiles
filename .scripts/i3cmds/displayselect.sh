@@ -3,7 +3,7 @@
 dual_screens() {
     primary=$(echo "$screens" | dmenu -i -p "Select primary screens:")
     secondary=$(echo "$screens" | grep -v "$primary")
-    xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --right-of "$primary" -set "scaling mode" "Full aspect"
+    xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --right-of "$primary" --auto --scale 1.0x1.0
 }
 
 one_screen() {
@@ -34,4 +34,5 @@ else
         "dual-screens") dual_screens ;;
         *) one_screen ;;
     esac
+    setbg
 fi
