@@ -1,4 +1,7 @@
 #!/bin/sh
 
 cd $DOTFILES_PATH
+
+echo "cp dotfiles: "
+git ls-files
 git ls-files | xargs -I {} echo "${HOME}/{} ${DOTFILES_PATH}{}" | xargs -n2 cp
