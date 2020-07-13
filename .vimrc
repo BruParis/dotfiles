@@ -28,3 +28,8 @@
 
 " Automatically deletes all trailing whitespace on save.
 	autocmd BufWritePre * %s/\s\+$//e
+
+" Enter to create a new line below without entering insert mode - Shift+Enter
+" for a new line above
+	nmap <S-Enter> O<Esc>
+	nmap <CR> o<Esc>
