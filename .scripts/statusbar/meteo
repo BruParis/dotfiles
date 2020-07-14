@@ -1,0 +1,26 @@
+#!/usr/bin/sh
+
+# get color aliases
+shopt -s expand_aliases
+source ~/.bashrc
+
+# Look for daily meteo report -> supposed to be run once or twice a day
+meteo_report="$HOME/.local/share/meteo_report"
+get_meteo() {
+	curl --silent wttr.in > "$meteo_report" || exit 1;
+}
+
+show_meteo() {
+	rain_proba=$(sed '16q;d' $meteo_report | grep -o "[0-9]*%" | sort -rn | sed 's/^/🌧️ /g;1q')
+	min_max_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | sed -e 1b -e '$!d' | tr "\n|m" " " | awk '{print " ~ ❄ " $2 " ☼ " $1}')
+
+	echo "<span>$rain_proba$min_max_temp</span>"
+
+	#echo -e "${blue}🌧️ ${no_color} $(sed '16q;d' $meteo_report | grep -o "[0-9]*%" | sort -rn | sed '1q') $(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | sed -e 1b -e '$!d' | tr "\n|m" " " | awk '{print "~ '${hcyan}'❄'${no_color}' "$2 " '${hyellow}'☼'${no_color}' "$1}')"
+}
+
+
+# check if meteo report has been updated today.
+[ "$(stat -c %y .local/share/meteo_report 2> /dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] || get_meteo
+
+show_meteo

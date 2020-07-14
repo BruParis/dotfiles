@@ -12,10 +12,24 @@ shopt -s checkwinsize
 eval $(ssh-agent) > /dev/null
 
 # Colors for the prompt
+no_color="\033[0;0m"
 blue="\033[0;34m"
 white="\033[0;37m"
 red="\033[0;31m"
 green="\033[0;32m"
+yellow="\033[0;33m"
+cyan="\033[0;36m"
+
+# High Intensty
+hblack="\033[0;90m"       # Black
+hred="\033[0;91m"         # Red
+hgreen="\033[0;92m"       # Green
+hyellow="\033[0;93m"      # Yellow
+hblue="\033[0;94m"        # Blue
+hpurple="\033[0;95m"      # Purple
+hcyan="\033[0;96m"        # Cyan
+hwhite="\033[0;97m"       # White
+
 
 parse_git_branch() {
     gitstatus="$(git status 2> /dev/null)"

@@ -13,7 +13,7 @@ min_width=:100.00%
 color=#00FF00
 
 [ram]
-label=
+label=💾
 interval=10
 color=#00FF00
 
@@ -26,9 +26,11 @@ color=#00FF00
 interval=once
 signal=10
 
-[time]
+[meteo]
+interval=43200
+
+[calendar_time]
 label=
-command=date '+ %a %d-%m-%y  %H:%M %p'
 interval=5
 color=#00FFFF
 
