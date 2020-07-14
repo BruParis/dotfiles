@@ -2,10 +2,17 @@ command=~/.scripts/statusbar/$BLOCK_NAME
 separator_block_width=20
 markup=pango
 
-[battery]
-command=echo $(~/.scripts/statusbar/battery BAT0)
-min_width=B:100%
-interval=10
+[meteo]
+interval=43200
+
+[clock]
+label=
+interval=5
+color=#00FFFF
+
+[volume]
+interval=once
+signal=10
 
 [cpu_usage]
 interval=5
@@ -22,17 +29,10 @@ label=
 interval=30
 color=#00FF00
 
-[volume]
-interval=once
-signal=10
-
-[meteo]
-interval=43200
-
-[calendar_time]
-label=
-interval=5
-color=#00FFFF
+[battery]
+command=echo $(~/.scripts/statusbar/battery BAT0)
+min_width=B:100%
+interval=10
 
 [shutdown_menu]
 full_text=  Quit

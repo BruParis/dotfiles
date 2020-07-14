@@ -22,10 +22,11 @@ exec --no-startup-id setbg
 
 # Composite manager
 exec --no-startup-id xcompmgr
-# exec --no-startup-id compton
 
 #music player daemon
 exec --no-startup-id mpd .config/mpd/mpd.conf
+
+exec --no-startup-id dunst
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
