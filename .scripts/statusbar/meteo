@@ -15,8 +15,8 @@ get_meteo() {
 show_meteo() {
 	rain_proba=$(sed '16q;d' $meteo_report | grep -o "[0-9]*%" | sort -rn | sed '1q')
 	min_max_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | sed -e 1b -e '$!d' | tr "\n|m" " " | awk '{print " ~ ❄ " $2 " y☼ " $1}')
-	min_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | tail -n 1 | tr -d "m")
-	max_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | head -n 1 | tr -d "m")
+	min_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | head -n 1 | tr -d "m")
+	max_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | tail -n 1 | tr -d "m")
 
 	lblue="$color12"
 	lcyan="$color14"

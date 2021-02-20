@@ -71,6 +71,7 @@ parse_git_branch_color() {
 #fi
 alias trash="trash-put"
 alias rm="echo 'rm disabled. Use trash to move to Trash/file'"
+alias cht.sh="~/bin/cht.sh"
 
 # Adding color
 alias git='LANG=en_GB git'

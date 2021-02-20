@@ -3,4 +3,4 @@
 
 wallpaper="$(find ${WALLPAPERS} -type f  | shuf -n1)"
 
-xwallpaper --maximize $wallpaper
+xwallpaper --focus $wallpaper
