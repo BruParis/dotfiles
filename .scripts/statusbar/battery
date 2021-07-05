@@ -17,8 +17,10 @@ else
     warn=" "
 fi
 
-[ -z $warn ] && warn=" "
+[ -z $warn ] && warn=""
 
 [ "$status" = "Charging" ] && color="$color4"
 
-printf "<span color='%s'>%s%s%s</span>" "$color" "$(echo "$status" | sed -e "s/,//g;s/Discharging/  /;s/Charging/ /g;s/Unknown/  /g;s/Full/ /g;s/ 0*/ /g;s/ :/ /g")" "$warn" "$(echo "$capacity" | sed -e 's/$/%/g')"
+msg="$(echo "$status$warn$capacity" | sed -e 's/,//g;s/Discharging/  /;s/Charging/ /g;s/Unknown/  /g;s/Full/ /g;s/ 0*/ /g;s/ :/ /g;s/$/%/g')"
+# printf "<span color='%s'>%s%s%s</span>" "$color" "$(echo "$status" | sed -e "s/,//g;s/Discharging/  /;s/Charging/ /g;s/Unknown/  /g;s/Full/ /g;s/ 0*/ /g;s/ :/ /g")" "$warn" "$(echo "$capacity" | sed -e 's/$/%/g')"
+echo "$msg"

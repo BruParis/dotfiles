@@ -52,15 +52,18 @@
 
 #amixer cmds + i3blocks signals
 #Increase Volume
-"amixer -c 1 set Master 5+; exec pkill -RTMIN+10 i3blocks"
+# "amixer -c 1 set Master 5+; exec pkill -RTMIN+10 i3blocks"
+"amixer -c 1 set Master 5+; exec pkill -RTMIN+10 dwmblocks"
   XF86AudioRaiseVolume
 
 #Deccrease Volume
-"amixer -c 1 set Master 5-; exec pkill -RTMIN+10 i3blocks"
+# "amixer -c 1 set Master 5-; exec pkill -RTMIN+10 i3blocks"
+"amixer -c 1 set Master 5-; exec pkill -RTMIN+10 dwmblocks"
   XF86AudioLowerVolume
 
 #Mute Volume
-"amixer -c 1 set Master toggle; exec pkill -RTMIN+10 i3blocks"
+# "amixer -c 1 set Master toggle; exec pkill -RTMIN+10 i3blocks"
+"amixer -c 1 set Master toggle; exec pkill -RTMIN+10 dwmblocks"
   XF86AudioMute
 
 #"xterm -geom 50x20+20+20"

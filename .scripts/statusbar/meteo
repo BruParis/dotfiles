@@ -15,14 +15,15 @@ get_meteo() {
 show_meteo() {
 	rain_proba=$(sed '16q;d' $meteo_report | grep -o "[0-9]*%" | sort -rn | sed '1q')
 	min_max_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | sed -e 1b -e '$!d' | tr "\n|m" " " | awk '{print " ~ ❄ " $2 " y☼ " $1}')
-	min_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | head -n 1 | tr -d "m")
-	max_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | tail -n 1 | tr -d "m")
+	max_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | head -n 1 | tr -d "m")
+	min_temp=$(sed '13q;d' $meteo_report | grep -o "m\\([-+]\\)*[0-9]\\+" | sort -rn | tail -n 1 | tr -d "m")
 
 	lblue="$color12"
 	lcyan="$color14"
 	lyellow="$color11"
 
-	echo "<span size='large' color='${lblue}'><b>🌧️</b></span>$rain_proba <span size='large' color='${lcyan}'><big>❄</big></span>$min_temp°C <span size='large' color='${lyellow}'><big>☀</big></span>$max_temp°C"
+	# echo "<span size='large' color='${lblue}'><b>🌧️</b></span>$rain_proba <span size='large' color='${lcyan}'><big>❄</big></span>$min_temp°C <span size='large' color='${lyellow}'><big>☀</big></span>$max_temp°C"
+	echo " 🌧️ $rain_proba ❄ $min_temp°C ☀ $max_temp°C"
 }
 
 case $BLOCK_BUTTON in
