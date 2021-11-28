@@ -79,3 +79,8 @@ alias ls='ls -hN --color=auto --group-directories-first'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ccat="highglight --outt-format-ansi" #Color cat with syntax highlight
+
+#latex
+alias tlmgr="${TEXFMDIST}/scripts/texlive/tlmgr.pl --usermode"
+
+complete -C /usr/bin/consul consul

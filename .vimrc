@@ -12,7 +12,7 @@
 	set number relativenumber
 
 " Vundle package manager
-        set rtp+=/usr/share/vim/vimfiles/autoload/vundle.vim
+        set rtp+=~/.vim/bundle/vundle.vim
  	call vundle#begin()
 	Plugin 'VundleVim/vundle.vim'
 
