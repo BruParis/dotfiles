@@ -3,7 +3,7 @@
 # xbindkeys configuration #
 ###########################
 #
-# Version: 1.8.6
+# Version: 1.8.7
 #
 # If you edit this file, do not forget to uncomment any lines
 # that you change.
@@ -39,32 +39,32 @@
 
 # Examples of commands:
 
-"xbindkeys_show"
-  control+shift + q
+# "xbindkeys_show"
+#  control+shift + q
 
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
 #  c:41 + m:0x4
 
 # specify a mouse button
-"xterm"
-  control + b:2
+#"xterm"
+#  control + b:2
 
-#amixer cmds + i3blocks signals
-#Increase Volume
-# "amixer -c 1 set Master 5+; exec pkill -RTMIN+10 i3blocks"
-"amixer -c 1 set Master 5+; exec pkill -RTMIN+10 dwmblocks"
-  XF86AudioRaiseVolume
+# Increase volume
+"amixer sset Master 5%+ unmute; exec pkill -RTMIN+10 dwmblocks"
+   c:76
 
-#Deccrease Volume
-# "amixer -c 1 set Master 5-; exec pkill -RTMIN+10 i3blocks"
-"amixer -c 1 set Master 5-; exec pkill -RTMIN+10 dwmblocks"
-  XF86AudioLowerVolume
+# Decrease volume
+"amixer sset Master 5%- unmute; exec pkill -RTMIN+10 dwmblocks"
+   c:75
 
-#Mute Volume
-# "amixer -c 1 set Master toggle; exec pkill -RTMIN+10 i3blocks"
-"amixer -c 1 set Master toggle; exec pkill -RTMIN+10 dwmblocks"
-  XF86AudioMute
+# Mute volume
+"amixer sset Master toggle; exec pkill -RTMIN+10 dwmblocks"
+   c:95
+
+# Mute microphone
+# "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+#    XF86AudioMicMute
 
 #"xterm -geom 50x20+20+20"
 #   Shift+Mod2+alt + s

@@ -11,7 +11,7 @@ one_screen() {
 }
 
 # get all possible displays.
-displays=$(xrandr -q | grep "\ connected")
+displays=$(xrandr -q | grep " connected")
 
 # get all connected screens.
 screens=$(echo "$displays" | awk '{print $1}')

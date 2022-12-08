@@ -1,15 +1,16 @@
 #!/bin/sh
 
-volume=$(amixer -c 1 sget Master | awk -F"[][]" '/dB/ {print $2}' | sed 's/%//g')
+on_off=$(amixer sget Master | awk -F"[][]" '{print $6}' | sed '/^\s*$/d')
+volume=$(amixer sget Master | awk -F"[][]" '/dB/ {print $2}' | sed 's/%//g')
 
-if [ "$volume" -ge 66 ]; then
+if [ $on_off == "off" ]; then
+    icon="🔇"
+elif [ "$volume" -ge 66 ]; then
     icon="🔊"
 elif [ "$volume" -ge 33 ]; then
     icon="🔉"
-elif [ "$volume" -ge 1 ]; then
-    icon="🔈"
 else
-    icon="🔇"
+    icon="🔈"
 fi
 
 echo "$icon $volume%"
